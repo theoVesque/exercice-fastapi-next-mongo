@@ -1,0 +1,153 @@
+[
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "api.database",
+        "description": "api.database",
+        "isExtraImport": true,
+        "detail": "api.database",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "api.model.document",
+        "description": "api.model.document",
+        "isExtraImport": true,
+        "detail": "api.model.document",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "ServerApi",
+        "importPath": "pymongo.server_api",
+        "description": "pymongo.server_api",
+        "isExtraImport": true,
+        "detail": "pymongo.server_api",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "api.controller.documentController",
+        "description": "api.controller.documentController",
+        "isExtraImport": true,
+        "detail": "api.controller.documentController",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "api.controller.documentController",
+        "description": "api.controller.documentController",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/documents\")\nasync def create_document(document: Document):\n    document_dict = document.dict()\n    result = db.documents.insert_one(document_dict)\n    if result.inserted_id:\n        document_dict[\"_id\"] = str(result.inserted_id)\n        return document_dict\n    raise HTTPException(status_code=400, detail=\"Erreur lors de l'enregistrement du document.\")\n@router.put(\"/documents/{document_id}\")",
+        "detail": "api.controller.documentController",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "kind": 6,
+        "importPath": "api.model.document",
+        "description": "api.model.document",
+        "peekOfCode": "class Document(BaseModel):\n    title: str\n    content: str",
+        "detail": "api.model.document",
+        "documentation": {}
+    },
+    {
+        "label": "uri",
+        "kind": 5,
+        "importPath": "api.database",
+        "description": "api.database",
+        "peekOfCode": "uri = \"mongodb+srv://theovesque171201:02DcofDMMegqJuOw@cluster0.uezr7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\"\nclient = MongoClient(uri, server_api=ServerApi('1'))\ndb = client['exercice-fastapi']",
+        "detail": "api.database",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "api.database",
+        "description": "api.database",
+        "peekOfCode": "client = MongoClient(uri, server_api=ServerApi('1'))\ndb = client['exercice-fastapi']",
+        "detail": "api.database",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "api.database",
+        "description": "api.database",
+        "peekOfCode": "db = client['exercice-fastapi']",
+        "detail": "api.database",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.index",
+        "description": "api.index",
+        "peekOfCode": "app = FastAPI()\norigins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"*\"\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,",
+        "detail": "api.index",
+        "documentation": {}
+    },
+    {
+        "label": "origins",
+        "kind": 5,
+        "importPath": "api.index",
+        "description": "api.index",
+        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"*\"\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],",
+        "detail": "api.index",
+        "documentation": {}
+    }
+]
