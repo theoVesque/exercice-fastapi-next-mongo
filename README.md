@@ -1,1 +1,1 @@
-# exercice-fastapi-next-mongi
+# exercice-fastapi-next-mongo
